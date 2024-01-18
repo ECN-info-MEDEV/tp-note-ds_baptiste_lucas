@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class Point {
     private int x;
     private int y;
@@ -23,5 +25,13 @@ public class Point {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public Boolean isInArray(ArrayList<Point> array){
+        Boolean bool = false;
+        for(Point p : array){
+            if ((p.getX()==x)&&(p.getY()==y)){bool = true;}
+        }
+        return bool;
     }
 }
