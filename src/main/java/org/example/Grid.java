@@ -13,6 +13,17 @@ public class Grid {
     }
 
     Navire findNavire(Point point){
-        return matrix[point.getX()][point.getY()];
+        return matrix[point.getY()][point.getX()];
+    }
+
+    void AjouterNavire(Navire navire, Point point, int orientation){
+        int sens = -1;
+        int x = point.getX();
+        int y = point.getY();
+        if (orientation<3){sens=1;}
+        for (int i=0; i< navire.getSize(); i++){
+            if (orientation%2 == 0){matrix[y+sens*i][x] = navire;}
+            else {matrix[y][x+sens*i] = navire;}
+        }
     }
 }
