@@ -2,9 +2,17 @@ package org.example;
 
 public class Navire {
     private String name;
-
+    private int vie;
     private int size;
 
+    public int getVie() {
+        return vie;
+    }
+
+    public void setVie(int vie) {
+        this.vie = vie;
+    }
+    
     /**
      * Constructeur du navire
      * @param size longeur du navire
@@ -24,6 +32,7 @@ public class Navire {
             default:
                 System.out.println("Taille incorrecte !");
         }
+        this.vie=this.size;
     }
 
     public int getSize() {
