@@ -27,6 +27,9 @@ public class Point {
         this.y = y;
     }
 
+    /**
+     * Verifie si le point est dans un ArrayList
+     */
     public Boolean isInArray(ArrayList<Point> array){
         Boolean bool = false;
         for(Point p : array){

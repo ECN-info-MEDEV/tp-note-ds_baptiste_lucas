@@ -34,7 +34,7 @@ public class Grid {
      * @return null s'il n'est pas occupé, le navire occupant le point sinon
      */
     Navire findNavire(Point point){
-        return matrix[point.getY()][point.getX()];
+        return matrix[point.getY()-1][point.getX()-1];
     }
 
     /**
@@ -50,12 +50,12 @@ public class Grid {
         int y = point.getY();
         if (orientation<3){sens=1;}
         for (int i=0; i< navire.getSize(); i++){
-            if (orientation%2 != 0){
-                if(matrix[y+sens*i-1][x-1]!=null){throw new Exception("Collision navire");}
+            if (orientation%2 == 0){
+                if(matrix[x-1][y+sens*i-1]!=null){throw new Exception("Collision navire");}
             }
         
             else {
-                if(matrix[y-1][x+sens*i-1]!=null){throw new Exception("Collision navire");}
+                if(matrix[x+sens*i-1][y-1]!=null){throw new Exception("Collision navire");}
             }
         }
         for (int i=0; i< navire.getSize(); i++){
@@ -74,23 +74,26 @@ public class Grid {
      */
     public boolean verifierNavire(int size, int x, int y, int orientation){
         boolean estdedans = true;
-        if ((orientation == 1) && (y+size-1>5)){
+        if ((orientation == 1) && (x+size-1>5)){
             estdedans=false;
         }
-        else if ((orientation == 2) && (x+size-1>5)){
+        else if ((orientation == 2) && (y+size-1>5)){
             estdedans=false;
         }
-        else if ((orientation == 3) && (y-size<0)){
+        else if ((orientation == 3) && (x-size<0)){
             estdedans=false;
         }
-        else if ((orientation == 4) && (x-size<0)){
+        else if ((orientation == 4) && (y-size<0)){
             estdedans=false;
         }
         return estdedans;
     }
 
-
+    /**
+     * Affiche la carte des bateaux sur la grille
+     */
     void afficher(){
+        System.out.println("D:Destroyer \nP:porte-avions \nC:Cuirassé ");
         System.out.println("   1 2 3 4 5");
         for (int i=0; i<size; i++){
             System.out.print(i+1 + "  ");
@@ -104,12 +107,19 @@ public class Grid {
         System.out.println("");
     }
 
+    /**
+     * Affiche la carte des frappes réalisées et si elles ont touché un navire
+     */
     void afficherCache(){
+        System.out.println("T:touché \n R:raté");
         System.out.println("   1 2 3 4 5");
         for (int i=0; i<size; i++){
             System.out.print(i+1 + "  ");
             for (int j=0; j<size; j++){
-                if (new Point(i+1, j+1).isInArray(strikes)){System.out.print("S");}
+                if (new Point(i+1, j+1).isInArray(strikes)){
+                    if (findNavire(new Point(i+1, j+1)) != null){System.out.print("T");}
+                    else {System.out.print("R");}
+                }
                 else{System.out.print("x");}
                 System.out.print(" ");
             }
@@ -129,10 +139,11 @@ public class Grid {
     Scanner sc = new Scanner(System.in);
     while (done!=true){
         done=true;
+        afficher();
         System.out.println("Où voulez-vous placer le porte-avion ? (entrez x puis y puis l'orientation)");
         x = sc.nextInt();
         y = sc.nextInt();
-        System.out.println("Orientation: \n 1:haut \n 2:droite \n 3:bas \n 4:gauche");
+        System.out.println("Orientation: \n 1:droite \n 2:bas \n 3:gauche \n 4:haut");
         o = sc.nextInt();
         Point p = new Point(x,y);
         Navire n = new Navire (5);
@@ -159,7 +170,7 @@ public class Grid {
         System.out.println("Où voulez-vous placer le cuirassé ? (entrez x puis y puis l'orientation)");
         x = sc.nextInt();
         y = sc.nextInt();
-        System.out.println("Orientation: \n 1:haut \n 2:droite \n 3:bas \n 4:gauche");
+        System.out.println("Orientation: \n 1:droite \n 2:bas \n 3:gauche \n 4:haut");
         o = sc.nextInt();
         Point p = new Point(x,y);
         Navire n = new Navire (5);
@@ -185,7 +196,7 @@ public class Grid {
         System.out.println("Où voulez-vous placer le destroyer ? (entrez x puis y puis l'orientation)");
         x = sc.nextInt();
         y = sc.nextInt();
-        System.out.println("Orientation: \n 1:haut \n 2:droite \n 3:bas \n 4:gauche");
+        System.out.println("Orientation: \n 1:droite \n 2:bas \n 3:gauche \n 4:haut");
         o = sc.nextInt();
         Point p = new Point(x,y);
         Navire n = new Navire (5);
