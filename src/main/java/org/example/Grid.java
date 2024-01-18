@@ -20,6 +20,14 @@ public class Grid {
         strikes = new ArrayList<Point>();
     }
 
+    public ArrayList<Point> getStrikes() {
+        return strikes;
+    }
+
+    public void setStrikes(ArrayList<Point> strikes, Point p) {
+        strikes.add(p);
+        this.strikes = strikes;
+    }
     /**
      * Permet de trouver si un point est occupé par un navire
      * @param point 
