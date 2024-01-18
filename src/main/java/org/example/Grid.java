@@ -51,6 +51,7 @@ public class Grid {
         if (orientation<3){sens=1;}
         for (int i=0; i< navire.getSize(); i++){
             if (orientation%2 == 0){
+
                 if(matrix[x-1][y+sens*i-1]!=null){throw new Exception("Collision navire");}
             }
         
@@ -130,7 +131,9 @@ public class Grid {
 
     
     
-    
+    /**
+     * Permet à un joueur de placer ses bateaux sur la grille
+     */
     public void initializeGrid(){
     boolean done=false;        
     int x;
@@ -167,6 +170,7 @@ public class Grid {
     done=false;
     while (done!=true){
         done=true;
+        afficher();
         System.out.println("Où voulez-vous placer le cuirassé ? (entrez x puis y puis l'orientation)");
         x = sc.nextInt();
         y = sc.nextInt();
@@ -193,6 +197,7 @@ public class Grid {
     done=false;
     while (done!=true){
         done=true;
+        afficher();
         System.out.println("Où voulez-vous placer le destroyer ? (entrez x puis y puis l'orientation)");
         x = sc.nextInt();
         y = sc.nextInt();
