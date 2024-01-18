@@ -40,12 +40,14 @@ public class Game {
         Scanner sc = new Scanner(System.in);
         int x;
         int y;
-        
+
+        grid2.afficherCache();
         System.out.println("Joueur 1, choisissez une case à attaquer (x puis y)");
         x = sc.nextInt();
         y = sc.nextInt();
         Point p = new Point (x,y);
         while (grid2.getStrikes().contains(p)){
+            grid2.afficherCache();
             System.out.println("Vous avez déjà attaqué ce point !");
             System.out.println("Choisissez une case à attaquer (x puis y)");
             x = sc.nextInt();
@@ -71,12 +73,13 @@ public class Game {
         }
   
         
-        
+        grid1.afficherCache();
         System.out.println("Joueur 2, choisissez une case à attaquer (x puis y)");
         x = sc.nextInt();
         y = sc.nextInt();
         Point p1 = new Point (x,y);
         while (grid1.getStrikes().contains(p1)){
+            grid1.afficherCache();
             System.out.println("Vous avez déjà attaqué ce point !");
             System.out.println("Choisissez une case à attaquer (x puis y)");
             x = sc.nextInt();
