@@ -20,4 +20,8 @@ public class Navire {
                 System.out.println("Taille incorrecte !");
         }
     }
+
+    public int getSize() {
+        return size;
+    }
 }
