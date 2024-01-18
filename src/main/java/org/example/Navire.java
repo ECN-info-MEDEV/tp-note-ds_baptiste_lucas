@@ -2,8 +2,13 @@ package org.example;
 
 public class Navire {
     private String name;
+
     private int size;
 
+    /**
+     * Constructeur du navire
+     * @param size longeur du navire
+     */
     Navire(int size){
         this.size = size;
         switch(size){
@@ -25,6 +30,7 @@ public class Navire {
         return size;
     }
 
+
     public String getName(){ return name; }
 
     public String toString(){
@@ -43,5 +49,9 @@ public class Navire {
                 System.out.println("Taille incorrecte !");
         }
         return letter;
+
+    
+    public String getName() {
+        return name;
     }
 }
