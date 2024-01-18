@@ -2,13 +2,18 @@ package org.example;
 
 public class Navire {
     private String name;
+
     private int size;
 
+    /**
+     * Constructeur du navire
+     * @param size longeur du navire
+     */
     Navire(int size){
         this.size = size;
         switch(size){
             case 3:
-                this.name = "";
+                this.name = "Destroyer";
                 break;
             case 4:
                 this.name = "Cuirassé";
@@ -23,5 +28,9 @@ public class Navire {
 
     public int getSize() {
         return size;
+    }
+    
+    public String getName() {
+        return name;
     }
 }
