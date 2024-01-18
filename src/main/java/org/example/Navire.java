@@ -33,9 +33,9 @@ public class Navire {
 
     public String getName(){ return name; }
 
-    public String toString(){
+    public String toString() {
         String letter = " ";
-        switch(size){
+        switch (size) {
             case 3:
                 letter = "D";
                 break;
@@ -49,9 +49,6 @@ public class Navire {
                 System.out.println("Taille incorrecte !");
         }
         return letter;
-
-    
-    public String getName() {
-        return name;
     }
+
 }
