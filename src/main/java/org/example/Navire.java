@@ -1,8 +1,8 @@
 package org.example;
 
 public class Navire {
-    String name;
-    int size;
+    private String name;
+    private int size;
 
     Navire(int size){
         this.size = size;
