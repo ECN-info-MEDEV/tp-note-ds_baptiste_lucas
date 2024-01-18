@@ -29,6 +29,27 @@ public class Navire {
     public int getSize() {
         return size;
     }
+
+
+    public String getName(){ return name; }
+
+    public String toString(){
+        String letter = " ";
+        switch(size){
+            case 3:
+                letter = "D";
+                break;
+            case 4:
+                letter = "C";
+                break;
+            case 5:
+                letter = "P";
+                break;
+            default:
+                System.out.println("Taille incorrecte !");
+        }
+        return letter;
+
     
     public String getName() {
         return name;
