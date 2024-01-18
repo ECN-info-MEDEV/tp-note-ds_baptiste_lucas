@@ -42,6 +42,9 @@ public class Navire {
 
     public String getName(){ return name; }
 
+    /**
+     * Renvoie une lettre correspondant au bateau pour l'affichage
+     */
     public String toString() {
         String letter = " ";
         switch (size) {
