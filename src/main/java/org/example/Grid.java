@@ -51,11 +51,11 @@ public class Grid {
         if (orientation<3){sens=1;}
         for (int i=0; i< navire.getSize(); i++){
             if (orientation%2 != 0){
-                if(matrix[y+sens*i-1][x-1]!=null){throw new Exception("Collision navire");}
+                if(matrix[x-1][y+sens*i-1]!=null){throw new Exception("Collision navire");}
             }
         
             else {
-                if(matrix[y-1][x+sens*i-1]!=null){throw new Exception("Collision navire");}
+                if(matrix[x+sens*i-1][y-1]!=null){throw new Exception("Collision navire");}
             }
         }
         for (int i=0; i< navire.getSize(); i++){
@@ -89,8 +89,11 @@ public class Grid {
         return estdedans;
     }
 
-
+    /**
+     * Affiche la carte des bateaux sur la grille
+     */
     void afficher(){
+        System.out.println("D:Destroyer \nP:porte-avions \nC:Cuirassé ");
         System.out.println("   1 2 3 4 5");
         for (int i=0; i<size; i++){
             System.out.print(i+1 + "  ");
@@ -104,12 +107,19 @@ public class Grid {
         System.out.println("");
     }
 
+    /**
+     * Affiche la carte des frappes réalisées et si elles ont touché un navire
+     */
     void afficherCache(){
+        System.out.println("T:touché \n R:raté");
         System.out.println("   1 2 3 4 5");
         for (int i=0; i<size; i++){
             System.out.print(i+1 + "  ");
             for (int j=0; j<size; j++){
-                if (new Point(i+1, j+1).isInArray(strikes)){System.out.print("S");}
+                if (new Point(i+1, j+1).isInArray(strikes)){
+                    if (findNavire(new Point(i+1, j+1)) != null){System.out.print("T");}
+                    else {System.out.print("R");}
+                }
                 else{System.out.print("x");}
                 System.out.print(" ");
             }
